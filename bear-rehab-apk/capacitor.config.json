@@ -1,0 +1,8 @@
+{
+  "appId": "org.conservationalliance.bearrehab",
+  "appName": "Bear Rehab",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": true
+  }
+}

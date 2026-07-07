@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="bn"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>ভালুক পুনর্বাসন · Bear Rehab</title>
+<style>
+:root{--brown:#8a5a2b;--orange:#e5732b;--green:#1f8a4c;--red:#c62828;--blue:#2b6fb5;--purple:#8e44ad;--slate:#3a4a55}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-size:19px;background:#fff7e0;color:#2a2010;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0}
+.wrap{max-width:720px;margin:0 auto;padding:14px 14px 72px}
+h1{font-size:26px;font-weight:800;color:#8a3a12;margin:0 0 2px;display:flex;align-items:center;gap:10px}
+h1 img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #8a5a2b}
+.sub{color:#7a5a2a;font-size:14px;margin:0 0 10px;font-weight:600}
+.en{display:block;font-weight:600;font-size:11.5px;color:#9a7a3a}
+label{display:block;font-size:17px;font-weight:800;color:#8a3a12;margin:14px 0 5px}
+label .en{display:inline;margin-left:6px;font-weight:600;color:#9a7a3a}
+input,select,textarea{width:100%;font-size:18px;padding:14px;border:2px solid #e0b84e;border-radius:12px;background:#fffdf6;color:#2a2010;font-weight:600}
+textarea{min-height:70px}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:6px 0 14px}
+.tabs button{flex:1;min-width:92px;padding:13px 6px;border:2px solid #e6c46a;background:#fffdf6;border-radius:14px;font-weight:800;font-size:15px;color:#8a5a2b;cursor:pointer;text-align:center;line-height:1.15}
+.tabs button .en{color:#a88a4a}
+.tabs button.on{color:#fff;border-color:transparent}
+.panel{background:#fffdf6;border:2px solid #f0cf74;border-radius:18px;padding:14px;box-shadow:0 3px 12px rgba(140,90,25,.12)}
+.phead{font-size:21px;font-weight:800;margin:0 0 8px;border-bottom:3px solid currentColor;padding-bottom:8px}
+.phead .en{font-size:12px;color:#9a7a3a}
+.taprow{display:flex;gap:7px;flex-wrap:wrap;margin:4px 0 6px}
+.tap{flex:1;min-width:80px;padding:14px 6px;border:2px solid #e6c46a;background:#fffdf6;border-radius:13px;font-weight:800;font-size:15px;cursor:pointer;text-align:center;color:#3a2c1c}
+.tap .en{display:block;font-size:10.5px;font-weight:600;color:#a88a4a}
+.tap.on{background:#1f8a4c;border-color:#1f8a4c;color:#fff}
+.btn{display:block;width:100%;text-align:center;border:0;border-radius:14px;color:#fff;font-weight:800;font-size:18px;padding:16px;margin-top:14px;cursor:pointer;box-shadow:0 3px 8px rgba(140,90,25,.2)}
+.btnb{background:#8a5a2b}.btno{background:#e5732b}.btng{background:#1f8a4c}.btnr{background:#c62828}.btns{background:#2b6fb5}
+.big{font-size:22px;padding:22px}
+.chip{display:inline-block;background:#fff0bd;border:1px solid #e6c46a;border-radius:11px;padding:9px 13px;font-size:16px;font-weight:800;color:#8a5a2b;margin:2px 0}
+.link{color:#1f8a4c;font-weight:800;cursor:pointer;font-size:14px;margin-left:8px}
+.rec{border:1px solid #ecd591;border-radius:13px;padding:11px 12px;margin:8px 0;background:#fffdf6;font-weight:600}
+.rec b{color:#8a3a12}
+.muted{color:#8a7a44;font-size:14px}
+.card2{border:2px solid #f0cf74;border-radius:15px;padding:13px;margin:9px 0;background:#fffdf6}
+.msg{font-size:14px;color:#1f8a4c;font-weight:800;margin-top:8px;min-height:18px}
+.selbar{background:#fff0bd;border:1px solid #ecc760;border-radius:14px;padding:12px;margin:0 0 12px}
+.selbar label{margin-top:0}
+.hr{height:2px;background:#f0cf74;margin:14px 0;border-radius:2px}
+.net{font-size:13px;font-weight:700;color:#8a7a44;margin:0 0 8px}
+</style></head><body><div class="wrap">
+<h1><img src="baloo.png" alt="Baloo"> ভালুক পুনর্বাসন</h1>
+<div class="sub">বরনিপাড়া · সূর্য ভালুক · অফলাইন অ্যাপ (ইন্টারনেট লাগে না)<span class="en">Boronipara sun-bear care · fully offline</span></div>
+<div class="net" id="net"></div>
+
+<div class="tabs">
+  <button id="tb-protocols" class="on" onclick="tab('protocols')">📋 নিয়মাবলী<span class="en">Rules</span></button>
+  <button id="tb-profile" onclick="tab('profile')">🐻 প্রোফাইল<span class="en">Profile</span></button>
+  <button id="tb-feed" onclick="tab('feed')">🍽 খাওয়ানো<span class="en">Feeding</span></button>
+  <button id="tb-walk" onclick="tab('walk')">🐾 হাঁটা<span class="en">Walking</span></button>
+  <button id="tb-health" onclick="tab('health')">🏥 স্বাস্থ্য<span class="en">Health</span></button>
+  <button id="tb-weight" onclick="tab('weight')">⚖️ ওজন<span class="en">Weight</span></button>
+  <button id="tb-records" onclick="tab('records')">📋 রেকর্ড<span class="en">Records</span></button>
+  <button id="tb-share" onclick="tab('share')">🔄 শেয়ার<span class="en">Send</span></button>
+</div>
+
+<div id="t-protocols" class="panel">
+  <div class="phead" style="color:var(--red)">📋 নিয়ম ও প্রোটোকল<span class="en">Rules — read before every task</span></div>
+  <div id="proto-all"></div>
+</div>
+
+<div id="t-profile" class="panel" style="display:none">
+  <div class="phead" style="color:var(--brown)">🐻 ভালুকের প্রোফাইল<span class="en">Bear profiles</span></div>
+  <div id="bearList"></div>
+</div>
+
+<div id="t-feed" class="panel" style="display:none">
+  <div class="phead" style="color:var(--orange)">🍽 খাওয়ানো<span class="en">Feeding</span></div>
+  <div id="proto-feed"></div>
+  <button type="button" class="btn btno" onclick="var t=document.getElementById('feedTable');t.style.display=(t.style.display==='none'?'block':'none')">📊 খাওয়ানোর পরিমাণ (ওজন অনুযায়ী) ▾</button>
+  <div id="feedTable" style="display:none"></div>
+  <div class="selbar"><label>কোন ভালুক?</label><select id="f_bear" class="bs"></select></div>
+  <label>তারিখ<span class="en">Date</span></label><div class="chip" id="chip-f_date">—</div>
+  <label>সময় <span class="link" onclick="setNow('f_time')">এখন</span></label><input id="f_time" type="time">
+  <label>খাবার</label>
+  <select id="f_food"><option value="Milk / formula">দুধ / ফর্মুলা</option><option value="Banana">কলা</option><option value="Papaya">পেঁপে</option><option value="Other fruit">অন্য ফল</option><option value="Boiled egg">সিদ্ধ ডিম</option><option value="Rice / porridge">ভাত / জাউ</option><option value="Honey">মধু</option><option value="Other">অন্যান্য</option></select>
+  <label>কতটা দেওয়া (মি.লি./গ্রাম)</label><input id="f_offered" type="number" min="0" placeholder="e.g. 200">
+  <label>কতটা খেল?</label>
+  <div class="taprow" data-f="consumed"><div class="tap" data-v="All" onclick="pick(this)">সব</div><div class="tap" data-v="Most" onclick="pick(this)">বেশিরভাগ</div><div class="tap" data-v="Half" onclick="pick(this)">অর্ধেক</div><div class="tap" data-v="Little" onclick="pick(this)">অল্প</div><div class="tap" data-v="None" onclick="pick(this)">খায়নি</div></div>
+  <label>মন্তব্য</label><textarea id="f_remarks"></textarea>
+  <button class="btn btno" onclick="saveFeed()">💾 খাওয়ানো সেভ</button>
+  <div id="fMsg" class="msg"></div>
+</div>
+
+<div id="t-walk" class="panel" style="display:none">
+  <div class="phead" style="color:var(--green)">🐾 হাঁটা<span class="en">Walking</span></div>
+  <div id="proto-walk"></div>
+  <div style="background:#fff0bd;border:1px solid #ecc760;border-radius:12px;padding:11px 12px;margin:8px 0;font-weight:700;color:#8a5a2b;font-size:15px">📱 <b>হাঁটার সময়:</b> "হাঁটা শুরু" চাপুন, তারপর অ্যাপটি <b>খোলা রাখুন</b> ও ফোন <b>সাথে রাখুন</b> — বন্ধ করবেন না। হাঁটা শেষে "হাঁটা শেষ" চাপুন, তারপর <b>সেভ</b> করুন। ইন্টারনেট বা সিগন্যাল চলে গেলেও তথ্য <b>নষ্ট হবে না, ফোনে সেভ থাকবে</b>।</div>
+  <div class="selbar"><label>কোন ভালুক?</label><select id="w_bear" class="bs"></select></div>
+  <label>তারিখ</label><div class="chip" id="chip-w_date">—</div>
+  <div style="text-align:center;margin:12px 0">
+    <div id="wClock" style="font-size:40px;font-weight:800;color:#1f8a4c">0 min</div>
+    <button id="wBtn" class="btn btng big" onclick="toggleWalk()">▶ হাঁটা শুরু</button>
+  </div>
+  <label>এলাকা / রুট</label><input id="w_route" placeholder="forest edge, stream">
+  <label>আচরণ / নোট</label><textarea id="w_beh" placeholder="খুঁজল? গাছে উঠল? খেলল?"></textarea>
+  <label>নিয়ম মেনেছেন?<span class="en">Followed the rules?</span></label>
+  <div class="taprow" data-f="w_comp"><div class="tap" data-v="yes" onclick="pick(this);cToggle()">✅ হ্যাঁ, সব</div><div class="tap" data-v="no" onclick="pick(this);cToggle()">⚠️ না, সব নয়</div></div>
+  <input id="w_cnote" placeholder="কোন নিয়ম মানা যায়নি?" style="display:none">
+  <button class="btn btng" onclick="saveWalk()">💾 হাঁটা সেভ</button>
+  <div id="wMsg" class="msg"></div>
+</div>
+
+<div id="t-health" class="panel" style="display:none">
+  <div class="phead" style="color:var(--red)">🏥 স্বাস্থ্য<span class="en">Health</span></div>
+  <div class="selbar"><label>কোন ভালুক?</label><select id="h_bear" class="bs"></select></div>
+  <label>তারিখ</label><div class="chip" id="chip-h_date">—</div>
+  <label>খাওয়ার রুচি</label>
+  <div class="taprow" data-f="appetite"><div class="tap" data-v="Good" onclick="pick(this)">ভালো</div><div class="tap" data-v="Normal" onclick="pick(this)">স্বাভাবিক</div><div class="tap" data-v="Poor" onclick="pick(this)">কম</div><div class="tap" data-v="None" onclick="pick(this)">নেই</div></div>
+  <label>সক্রিয়তা</label>
+  <div class="taprow" data-f="activity"><div class="tap" data-v="Active" onclick="pick(this)">সক্রিয়</div><div class="tap" data-v="Normal" onclick="pick(this)">স্বাভাবিক</div><div class="tap" data-v="Lethargic" onclick="pick(this)">নিস্তেজ</div></div>
+  <label>মলত্যাগ / প্রস্রাব</label>
+  <div class="taprow" data-f="defecation"><div class="tap" data-v="Normal" onclick="pick(this)">স্বাভাবিক</div><div class="tap" data-v="Loose" onclick="pick(this)">পাতলা</div><div class="tap" data-v="Hard" onclick="pick(this)">শক্ত</div><div class="tap" data-v="None" onclick="pick(this)">হয়নি</div></div>
+  <label>আঘাত / অস্বাভাবিকতা</label>
+  <div class="taprow" data-f="injury"><div class="tap" data-v="None" onclick="pick(this);iToggle()">নেই</div><div class="tap" data-v="Yes" onclick="pick(this);iToggle()">আছে</div></div>
+  <input id="h_inote" placeholder="কী সমস্যা?" style="display:none">
+  <label>ওষুধ</label>
+  <div class="taprow" data-f="medication"><div class="tap" data-v="None" onclick="pick(this);mToggle()">দেওয়া হয়নি</div><div class="tap" data-v="Given" onclick="pick(this);mToggle()">দেওয়া হয়েছে</div></div>
+  <input id="h_mnote" placeholder="কোন ওষুধ?" style="display:none">
+  <label>অন্যান্য নোট</label><textarea id="h_others"></textarea>
+  <button class="btn btnr" onclick="saveHealth()">💾 স্বাস্থ্য সেভ</button>
+  <div id="hMsg" class="msg"></div>
+</div>
+
+<div id="t-weight" class="panel" style="display:none">
+  <div class="phead" style="color:var(--brown)">⚖️ ওজন<span class="en">Weight</span></div>
+  <div class="selbar"><label>কোন ভালুক?</label><select id="wt_bear" class="bs" onclick=""></select></div>
+  <label>তারিখ</label><div class="chip" id="chip-wt_date">—</div>
+  <label>ওজন (কেজি)</label><input id="wt_kg" type="number" step="0.1" min="0" placeholder="e.g. 6.5">
+  <button class="btn btnb" onclick="saveWeight()">💾 ওজন সেভ</button>
+  <div id="wtMsg" class="msg"></div>
+</div>
+
+<div id="t-records" class="panel" style="display:none">
+  <div class="phead" style="color:var(--slate)">📋 রেকর্ড<span class="en">Records on this phone</span></div>
+  <div id="recList"></div>
+</div>
+
+<div id="t-share" class="panel" style="display:none">
+  <div class="phead" style="color:var(--slate)">🔄 ডেটা পাঠান<span class="en">Send data — no internet needed</span></div>
+  <div class="chip" id="shareCount" style="margin-bottom:10px"></div>
+  <div class="card2" style="border-color:#bfe0c8">
+    <b style="color:#1f8a4c;font-size:17px">📤 ডেটা পাঠান</b>
+    <div style="margin:8px 0;font-weight:600">যিনি শহরে যাবেন তাকে ডেটা দিন — <b>ডেটা পাঠান</b> চাপুন, তারপর Bluetooth/Quick Share দিয়ে তার ফোনে পাঠান।</div>
+    <button class="btn btng" onclick="exportData()">📤 ডেটা পাঠান</button>
+    <div id="expMsg" class="msg"></div>
+  </div>
+  <div class="muted">💡 Bluetooth / Quick Share ইন্টারনেট ছাড়াই কাজ করে। শহরে গিয়ে ফাইলটি Hub অ্যাপে Import করলে আপলোড হবে।</div>
+</div>
+</div>
+
+<script>
+// ================= CCA Bear Rehab — offline collector =================
+function todayStr(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function uid(){return 'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);}
+function esc(x){return (x||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function v(id){var e=document.getElementById(id);return e?(e.value||'').trim():'';}
+function msg(id,t){var e=document.getElementById(id);if(e)e.textContent=t;}
+function pick(b){var row=b.parentNode;[].forEach.call(row.children,function(c){c.className='tap'+(c===b?' on':'');});}
+function picked(f){var r=document.querySelector("[data-f='"+f+"']");if(!r)return'';var on=r.querySelector('.tap.on');return on?on.getAttribute('data-v'):'';}
+function clearPicks(f){var r=document.querySelector("[data-f='"+f+"']");if(r)[].forEach.call(r.children,function(c){c.className='tap';});}
+function setNow(id){var d=new Date();document.getElementById(id).value=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
+var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+function fmtDMY(s){if(!s)return '';var p=String(s).split('-');if(p.length!==3)return s;return parseInt(p[2],10)+' '+(MON[parseInt(p[1],10)-1]||p[1])+' '+p[0];}
+
+// ---- storage ----
+function loadProfiles(){try{var p=JSON.parse(localStorage.getItem('bears_profiles')||'null');if(p&&p.length)return p;}catch(e){}
+  var seed=[
+   {id:'baloo',name:'Baloo',name_bn:'বালু',species_bn:'সূর্য ভালুক',sex:'Female',rescued:'2026-03-15',age_at_rescue_months:3.5,rescue_weight_kg:6,photo:'baloo.png'},
+   {id:'bearc',name:'Bear C',name_bn:'বেয়ার সি',species_bn:'সূর্য ভালুক',sex:'Female',rescued:'2026-06-23',age_at_rescue_months:0.85,rescue_weight_kg:1.2,photo:''}
+  ];localStorage.setItem('bears_profiles',JSON.stringify(seed));return seed;}
+function records(){try{return JSON.parse(localStorage.getItem('bears_records')||'[]');}catch(e){return [];}}
+function addRec(r){r.cid=r.cid||uid();var a=records();a.unshift(r);localStorage.setItem('bears_records',JSON.stringify(a));renderRecords();updateNet();}
+var PROFILES=loadProfiles();
+function bname(id){for(var i=0;i<PROFILES.length;i++)if(PROFILES[i].id===id)return PROFILES[i].name+(PROFILES[i].name_bn?(' ('+PROFILES[i].name_bn+')'):'');return id;}
+function latestWeight(id){var r=records().filter(function(x){return x.kind==='weight'&&x.bear_id===id&&x.weight_kg;}).sort(function(a,b){return a.date<b.date?1:-1;});return r[0]||null;}
+
+// ---- protocols ----
+var PAL=['#e5732b','#2b7de5','#27ae60','#e53935','#8e44ad','#0e9488','#d4a017'];
+var PROTO={
+ walk:{title:'হাঁটানোর নিয়মাবলী',en:'Walking rules',head:'#c62828',rules:[
+  {ic:'🌅',t:'প্রতিদিন সকাল ও বিকেলে হাঁটান — খাঁচা থেকে দূরে দূরে।'},
+  {ic:'🤫',t:'হাঁটানোর সময় কথা বলা বা চিৎকার নয় — একান্ত প্রয়োজন ছাড়া কোনো শব্দ নয়।'},
+  {ic:'🌲',t:'প্রতিদিন একই দিকে নয় — গ্রাম, মানুষ ও গবাদিপশু থেকে দূরে, বনের দিকে হাঁটান।'},
+  {ic:'🍎',t:'ভরা পেটে হাঁটানো যাবে না — একটু খালি পেটে। যেদিকে হাঁটাবেন সেখানে আগে থেকে ফল ও পোকামাকড় লুকিয়ে রাখুন (এনরিচমেন্ট)।'},
+  {ic:'📋',t:'এনরিচমেন্টের নির্দেশনা মেনে চলুন।'},
+  {ic:'🧍',t:'শুধু মেইন কিপার ভাল্লুকের সাথে থাকবে — বাকিরা দূর থেকে অনুসরণ করবে।'}]},
+ feed:{title:'খাওয়ানোর নিয়মাবলী',en:'Feeding rules',head:'#e5732b',rules:[
+  {ic:'🥛',t:'প্রতিদিন শরীরের ওজনের ১৫–২০% খাবার। একবারে সর্বোচ্চ ৩০–৩৫ মি.লি./কেজি — অতিরিক্ত খাওয়ালে ডায়রিয়া। (পরিমাণ = টেবিল দেখুন)'},
+  {ic:'🍼',t:'রুটিন: ৬৫০ মি.লি. দিনে ৪ বার, ৪ ঘণ্টা পর পর (১২+ কেজি)। ১ চামচ = ৩০ মি.লি.।'},
+  {ic:'🍎',t:'প্রতিদিন ৩০০ গ্রাম ফল।'},
+  {ic:'🥚',t:'সপ্তাহে তিনবার সেদ্ধ ডিম — একদিন পর পর।'},
+  {ic:'🌳',t:'বনের ফল সংগ্রহ; জুলাই–অগাস্টে জুমের মারফা ও ভুট্টা দিতে হবে।'},
+  {ic:'🍯',t:'হাঁটার আগে হাঁটার পথে এনরিচমেন্ট (মধু/ফল/পোকা লুকিয়ে রাখুন)।'},
+  {ic:'🚶',t:'ভরা পেটে হাঁটানো যাবে না — একটু খালি পেটে।'},
+  {ic:'🪵',t:'খাঁচায় গাছের গুঁড়ি রাখুন (আঁচড়/খেলার জন্য)।'}]}
+};
+function protoCard(p){var rows=p.rules.map(function(r,i){var c=PAL[i%PAL.length];return "<div style='display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:11px;margin:6px 0;background:"+(i%2?'#fff3d6':'#fff8e7')+";border-left:6px solid "+c+"'><div style='flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:"+c+";display:flex;align-items:center;justify-content:center;font-size:19px'>"+r.ic+"</div><div style='font-size:15.5px;font-weight:800;color:#2a2010;line-height:1.45'>"+(i+1)+"। "+r.t+"</div></div>";}).join('');
+ return "<div style='border:3px solid "+p.head+";border-radius:15px;overflow:hidden;margin:8px 0 14px'><div style='background:"+p.head+";color:#fff;font-size:19px;font-weight:900;padding:11px 12px;text-align:center'>⚠️ "+p.title+"</div><div style='padding:9px 10px;background:#fffdf6'>"+rows+"</div></div>";}
+function renderProtocols(){document.getElementById('proto-all').innerHTML=protoCard(PROTO.walk)+protoCard(PROTO.feed);
+ document.getElementById('proto-walk').innerHTML=protoCard(PROTO.walk);
+ document.getElementById('proto-feed').innerHTML=protoCard(PROTO.feed);}
+var FEED_TABLE=[['<১','৬','২৫','৩০'],['১','৬','২৫','৩০'],['১.৫','৬','৪০','৫০'],['২','৬','৫০','৭০'],['২.৫','৬','৬৫','৮৫'],['৩','৬','৭৫','১০০'],['৩.৫','৬','৯০','১২০'],['৪','৬','১০০+২০গ্রা ফল','১৩৫+২০গ্রা ফল'],['৪.৫','৬','১১৫+৩০গ্রা ফল','১৫০+৩০গ্রা ফল'],['৫','৬','১২৫+৪০গ্রা ফল','১৭০+৪০গ্রা ফল'],['৫.৫','৬','১৪০+৪০গ্রা','১৮৫+৪০গ্রা'],['৬','৬','১৫০+৪০গ্রা','২০০+৪০গ্রা'],['৬.৫','৬','১৬৫+৪০গ্রা','২২০+৪০গ্রা'],['৭.৫','৫','২২৫+৪৫গ্রা','৩০০+৪৫গ্রা'],['৮','৫','২৪০+৫৫গ্রা','৩২০+৫৫গ্রা'],['৯','৫','২৭০+১০০গ্রা','৩৬০+১০০গ্রা'],['১০','৪','৩৭৫+১৫০গ্রা','৫০০+১৫০গ্রা'],['১৩','৪','৪৮৭+২৫০গ্রা','৬৫০+২৫০গ্রা'],['১৫','৩','৩০০+৫০০গ্রা','৩০০+৫০০গ্রা'],['১৮','৩','১৫০+৭৫০গ্রা','১৫০+৭৫০গ্রা'],['২০','২','দুধ ছাড়া','দুধ ছাড়া']];
+function renderFeedTable(){var th="padding:7px;border:1px solid #e0b84e;background:#e5732b;color:#fff;font-size:12.5px";
+ var head="<tr><th style='"+th+"'>ওজন</th><th style='"+th+"'>ফিড</th><th style='"+th+"'>১৫%</th><th style='"+th+"'>২০%</th></tr>";
+ var b=FEED_TABLE.map(function(r,i){var bg=i%2?'#fff8e7':'#fff3d6';return "<tr style='background:"+bg+"'><td style='padding:6px 7px;border:1px solid #e6c46a;font-weight:800;color:#8a5a2b'>"+r[0]+"</td><td style='padding:6px 7px;border:1px solid #e6c46a;text-align:center'>"+r[1]+"</td><td style='padding:6px 7px;border:1px solid #e6c46a'>"+r[2]+"</td><td style='padding:6px 7px;border:1px solid #e6c46a'>"+r[3]+"</td></tr>";}).join('');
+ document.getElementById('feedTable').innerHTML="<div class='muted' style='margin:8px 0'>প্রতিবার পরিমাণ (মি.লি. দুধ + ফল/ভাত)। লক্ষ্য ১৫–২০%।</div><div style='overflow-x:auto'><table style='border-collapse:collapse;width:100%;font-size:13.5px'>"+head+b+"</table></div>";}
+
+// ---- profiles ----
+function ageText(p){if(!p.rescued)return '';var days=Math.round((new Date()-new Date(p.rescued))/86400000);var ar=parseFloat(p.age_at_rescue_months);var s="⏳ যত্নে "+days+" দিন";if(!isNaN(ar)){var m=ar+days/30.44;s+=" · আনুমানিক বয়স ~"+(m<2?(Math.round(m*4.345)+' সপ্তাহ'):(m.toFixed(1)+' মাস'));}return s;}
+function renderBears(){var el=document.getElementById('bearList');el.innerHTML=PROFILES.map(function(p){
+  var img=p.photo?("<img src='"+p.photo+"' style='width:64px;height:64px;border-radius:13px;object-fit:cover;border:2px solid #d8c9a0;float:left;margin:0 12px 4px 0'>"):"";
+  var lw=latestWeight(p.id);
+  return "<div class='card2'>"+img+"<b style='font-size:18px;color:#8a3a12'>🐻 "+esc(p.name)+(p.name_bn?(' · '+esc(p.name_bn)):'')+"</b> <span class='muted'>"+esc(p.sex||'')+"</span><br><span class='muted'>"+esc(p.species_bn||'সূর্য ভালুক')+"</span><br><span style='font-weight:800;color:#1f8a4c'>"+ageText(p)+"</span>"+(lw?("<br><span style='font-weight:800;color:#c2681a'>⚖️ বর্তমান ওজন: "+esc(String(lw.weight_kg))+" kg</span>"):"")+(p.rescue_weight_kg?("<br><span class='muted'>উদ্ধারে ওজন: "+esc(String(p.rescue_weight_kg))+" kg</span>"):"")+"<div style='clear:both'></div></div>";}).join('');}
+function fillBears(){var o=PROFILES.map(function(p){return "<option value='"+p.id+"'>"+esc(p.name)+"</option>";}).join('');['f_bear','w_bear','h_bear','wt_bear'].forEach(function(id){var s=document.getElementById(id);if(s)s.innerHTML=o;});}
+
+// ---- tabs ----
+var COL={protocols:'#c62828',profile:'#8a5a2b',feed:'#e5732b',walk:'#1f8a4c',health:'#c62828',weight:'#8a5a2b',records:'#3a4a55',share:'#3a4a55'};
+function tab(t){['protocols','profile','feed','walk','health','weight','records','share'].forEach(function(x){var el=document.getElementById('t-'+x);if(el)el.style.display=x===t?'block':'none';var b=document.getElementById('tb-'+x);if(b){b.className=x===t?'on':'';b.style.background=x===t?COL[x]:'';}});
+ if(t==='records')renderRecords();if(t==='share')renderShare();
+ ['f_date','w_date','h_date','wt_date'].forEach(function(id){var c=document.getElementById('chip-'+id);if(c)c.textContent='📅 '+fmtDMY(todayStr());});
+ if(t==='feed')setNow('f_time');}
+
+// ---- toggles ----
+function cToggle(){document.getElementById('w_cnote').style.display=(picked('w_comp')==='no'?'block':'none');}
+function iToggle(){document.getElementById('h_inote').style.display=(picked('injury')==='Yes'?'block':'none');}
+function mToggle(){document.getElementById('h_mnote').style.display=(picked('medication')==='Given'?'block':'none');}
+
+// ---- saves ----
+function saveFeed(){var bear=v('f_bear');if(!bear){msg('fMsg','ভালুক বাছুন');return;}
+ var n=records().filter(function(r){return r.kind==='feed'&&r.bear_id===bear&&r.date===todayStr();}).length;
+ addRec({kind:'feed',bear_id:bear,date:todayStr(),feed_no:n+1,time:v('f_time'),food:v('f_food'),offered:v('f_offered'),consumed:picked('consumed'),remarks:v('f_remarks')});
+ document.getElementById('f_offered').value='';document.getElementById('f_remarks').value='';clearPicks('consumed');msg('fMsg','✓ সেভ হলো');}
+var WS=null,WE=null,WT=null;
+function toggleWalk(){var b=document.getElementById('wBtn');if(WS&&!WE){WE=new Date();if(WT)clearInterval(WT);b.textContent='▶ আবার শুরু';b.className='btn btng big';tickW();}else{WS=new Date();WE=null;b.textContent='⏹ হাঁটা শেষ';b.className='btn btnr big';if(WT)clearInterval(WT);WT=setInterval(tickW,1000);tickW();}}
+function tickW(){if(!WS)return;var e=WE||new Date();document.getElementById('wClock').textContent=Math.round((e-WS)/60000)+' min';}
+function fmtT(d){return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');}
+function saveWalk(){var bear=v('w_bear');if(!bear){msg('wMsg','ভালুক বাছুন');return;}if(!WS){msg('wMsg','হাঁটা শুরু করুন');return;}
+ var e=WE||new Date();addRec({kind:'walk',bear_id:bear,date:todayStr(),start:fmtT(WS),end:fmtT(e),duration_min:Math.round((e-WS)/60000),route:v('w_route'),behaviour:v('w_beh'),compliance:picked('w_comp'),compliance_note:v('w_cnote')});
+ WS=null;WE=null;if(WT)clearInterval(WT);document.getElementById('wClock').textContent='0 min';document.getElementById('wBtn').textContent='▶ হাঁটা শুরু';document.getElementById('wBtn').className='btn btng big';document.getElementById('w_route').value='';document.getElementById('w_beh').value='';clearPicks('w_comp');document.getElementById('w_cnote').style.display='none';document.getElementById('w_cnote').value='';msg('wMsg','✓ সেভ হলো');}
+function saveHealth(){var bear=v('h_bear');if(!bear){msg('hMsg','ভালুক বাছুন');return;}
+ addRec({kind:'health',bear_id:bear,date:todayStr(),appetite:picked('appetite'),activity:picked('activity'),defecation:picked('defecation'),injury:picked('injury'),injury_note:v('h_inote'),medication:picked('medication'),medication_note:v('h_mnote'),others:v('h_others')});
+ ['appetite','activity','defecation','injury','medication'].forEach(clearPicks);document.getElementById('h_inote').value='';document.getElementById('h_inote').style.display='none';document.getElementById('h_mnote').value='';document.getElementById('h_mnote').style.display='none';document.getElementById('h_others').value='';msg('hMsg','✓ সেভ হলো');}
+function saveWeight(){var bear=v('wt_bear');if(!bear){msg('wtMsg','ভালুক বাছুন');return;}var kg=v('wt_kg');if(!kg){msg('wtMsg','ওজন দিন');return;}
+ addRec({kind:'weight',bear_id:bear,date:todayStr(),weight_kg:kg});document.getElementById('wt_kg').value='';renderBears();msg('wtMsg','✓ সেভ হলো');}
+
+// ---- records + share ----
+function recLine(r){var d=fmtDMY(r.date);if(r.kind==='feed')return "🍽 "+d+" — #"+(r.feed_no||'')+" "+esc(r.food||'')+" ("+esc(r.consumed||'?')+")";
+ if(r.kind==='walk')return "🐾 "+d+" — "+(r.duration_min||0)+" min "+(r.route?('· '+esc(r.route)):'')+(r.compliance==='no'?' · ⚠️ নিয়ম ভাঙা':'');
+ if(r.kind==='health')return "🏥 "+d+" — রুচি "+esc(r.appetite||'?')+" · "+esc(r.activity||'?');
+ if(r.kind==='weight')return "⚖️ "+d+" — "+esc(String(r.weight_kg))+" kg";return d;}
+function renderRecords(){var a=records();document.getElementById('recList').innerHTML=a.length?a.slice(0,150).map(function(r){return "<div class='rec'><b>"+esc(bname(r.bear_id))+"</b><br>"+recLine(r)+"</div>";}).join(''):"<div class='muted'>কোনো রেকর্ড নেই</div>";}
+function renderShare(){document.getElementById('shareCount').textContent='📦 এই ফোনে '+records().length+' টি রেকর্ড';}
+function exportData(){var a=records();if(!a.length){msg('expMsg','পাঠানোর মতো ডেটা নেই');return;}
+ var payload=JSON.stringify({app:'bears',v:1,records:a});var blob=new Blob([payload],{type:'application/json'});var fn='bear-data-'+Date.now()+'.json';
+ try{var file=new File([blob],fn,{type:'application/json'});if(navigator.canShare&&navigator.canShare({files:[file]})){navigator.share({files:[file],title:'ভালুক ডেটা'}).then(function(){msg('expMsg','✓ পাঠানো হয়েছে ('+a.length+')');}).catch(function(){});return;}}catch(e){}
+ var url=URL.createObjectURL(blob);var el=document.createElement('a');el.href=url;el.download=fn;document.body.appendChild(el);el.click();el.remove();msg('expMsg','✓ ফাইল সেভ হলো ('+a.length+') — Bluetooth দিয়ে পাঠান');}
+function updateNet(){var e=document.getElementById('net');if(e)e.textContent='📦 এই ফোনে '+records().length+' টি রেকর্ড · অফলাইনে সেভ হচ্ছে';}
+
+// ---- init ----
+renderProtocols();renderFeedTable();fillBears();renderBears();updateNet();tab('protocols');
+</script>
+</body></html>
