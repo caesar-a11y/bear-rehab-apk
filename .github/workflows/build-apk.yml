@@ -30,6 +30,14 @@ jobs:
       - name: Generate app icons (Baloo)
         run: npx @capacitor/assets generate --android || echo "assets step skipped"
       - run: npx cap sync android
+      - name: Enable GPS (manifest permission + runtime request)
+        run: |
+          MF=android/app/src/main/AndroidManifest.xml
+          grep -q ACCESS_FINE_LOCATION "$MF" || sed -i 's#<application#<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>\n    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>\n    <application#' "$MF"
+          MA=$(find android/app/src/main/java -name MainActivity.java | head -1)
+          PKG=$(sed -n 's/^package \(.*\);/\1/p' "$MA")
+          printf 'package %s;\nimport android.Manifest;\nimport android.os.Build;\nimport android.os.Bundle;\nimport com.getcapacitor.BridgeActivity;\npublic class MainActivity extends BridgeActivity {\n  @Override public void onCreate(Bundle b){\n    super.onCreate(b);\n    try { if (Build.VERSION.SDK_INT >= 23) requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001); } catch(Exception e){}\n  }\n}\n' "$PKG" > "$MA"
+          echo "PERMS:"; grep -i uses-permission "$MF" || true
       - name: Build debug APK
         run: |
           cd android
