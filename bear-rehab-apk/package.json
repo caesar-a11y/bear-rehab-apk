@@ -1,7 +1,7 @@
 {
   "name": "bear-rehab",
   "version": "1.0.0",
-  "description": "CCA Bear Rehabilitation — offline field app (never-online APK)",
+  "description": "CCA Bear Rehabilitation â offline field app (never-online APK)",
   "private": true,
   "devDependencies": {
     "@capacitor/assets": "^3.0.5",
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@capacitor/android": "^6.1.2",
-    "@capacitor/core": "^6.1.2"
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/geolocation": "^6.1.0"
   }
 }
